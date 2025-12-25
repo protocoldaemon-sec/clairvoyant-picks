@@ -25,11 +25,11 @@ const TopMarkets = () => {
   ];
 
   return (
-    <section id="markets" className="py-12 lg:py-20 bg-secondary/30">
+    <section id="markets" className="py-12 lg:py-20 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 text-sm text-accent font-medium mb-3">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <div className="inline-flex items-center gap-2 text-sm text-success font-medium mb-3">
+            <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
             Update 2 menit lalu
           </div>
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">
@@ -47,7 +47,7 @@ const TopMarkets = () => {
               className="p-5 rounded-2xl border border-border bg-card hover:shadow-card transition-all"
             >
               <div className="flex items-center justify-between mb-3">
-                <Badge variant="outline" className="border-accent/50 text-accent bg-accent/5 text-xs">
+                <Badge className="bg-accent text-foreground hover:bg-accent border-0 text-xs">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   Edge Tinggi
                 </Badge>
@@ -62,17 +62,17 @@ const TopMarkets = () => {
                   <div className="text-xs text-muted-foreground">Pasar</div>
                   <div className="font-semibold text-foreground">{market.marketOdds}%</div>
                 </div>
-                <div className="p-2 rounded-lg bg-accent/10">
+                <div className="p-2 rounded-lg bg-accent">
                   <div className="text-xs text-muted-foreground">AI</div>
-                  <div className="font-semibold text-accent">{market.aiWinRate}%</div>
+                  <div className="font-semibold text-success">{market.aiWinRate}%</div>
                 </div>
-                <div className="p-2 rounded-lg bg-accent/20">
+                <div className="p-2 rounded-lg bg-success/10 border border-success/30">
                   <div className="text-xs text-muted-foreground">Edge</div>
-                  <div className="font-semibold text-accent">+{market.edge}%</div>
+                  <div className="font-semibold text-success">+{market.edge}%</div>
                 </div>
               </div>
 
-              <Button size="sm" className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button size="sm" className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
                 Taruhan Sekarang
                 <ExternalLink className="w-3 h-3" />
               </Button>
@@ -81,7 +81,7 @@ const TopMarkets = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" className="gap-2">
+          <Button variant="outline" className="gap-2 border-primary/30 hover:bg-accent">
             Lihat Semua 50+ Pasar
             <ArrowRight className="w-4 h-4" />
           </Button>

@@ -15,17 +15,17 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-secondary/30">
+    <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-foreground text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
             Analisis AI Real-time
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-tight">
             Temukan Peluang Terbaik di{" "}
-            <span className="text-accent">Kalshi</span>
+            <span className="text-success">Kalshi</span>
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -34,11 +34,11 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-            <Button size="lg" className="w-full sm:w-auto gap-2 bg-accent text-accent-foreground hover:bg-accent/90 text-base h-12 px-8">
+            <Button size="lg" className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-base h-12 px-8">
               Lihat Peluang Terbaik
               <ArrowRight className="w-4 h-4" />
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto text-base h-12 px-8">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto text-base h-12 px-8 border-primary/30 hover:bg-accent">
               Pelajari Cara Kerjanya
             </Button>
           </div>
@@ -46,7 +46,7 @@ const HeroSection = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
             {trustItems.map((item, index) => (
               <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 className="w-4 h-4 text-accent" />
+                <CheckCircle2 className="w-4 h-4 text-success" />
                 <span>{item}</span>
               </div>
             ))}
@@ -59,12 +59,12 @@ const HeroSection = () => {
               key={index}
               className={`p-6 rounded-xl text-center ${
                 stat.highlight
-                  ? "bg-accent/10 border-2 border-accent/30"
+                  ? "bg-accent border-2 border-success/30"
                   : "bg-card border border-border shadow-soft"
               }`}
             >
               <div className={`text-3xl lg:text-4xl font-bold mb-1 ${
-                stat.highlight ? "text-accent" : "text-foreground"
+                stat.highlight ? "text-success" : "text-foreground"
               }`}>
                 {stat.value}
               </div>

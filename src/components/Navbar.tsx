@@ -34,10 +34,10 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="border-primary/30 hover:bg-accent">
               Masuk
             </Button>
-            <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               Daftar Gratis
             </Button>
           </div>
@@ -64,10 +64,10 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex gap-2 pt-2">
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button variant="outline" size="sm" className="flex-1 border-primary/30 hover:bg-accent">
                   Masuk
                 </Button>
-                <Button size="sm" className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button size="sm" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
                   Daftar Gratis
                 </Button>
               </div>

@@ -49,12 +49,12 @@ const HowItWorks = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-accent" />
+                    <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                      <step.icon className="w-6 h-6 text-foreground" />
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-accent mb-1">Langkah {step.number}</div>
+                    <div className="text-xs font-medium text-success mb-1">Langkah {step.number}</div>
                     <h3 className="font-semibold text-foreground mb-2">{step.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
                   </div>
@@ -65,20 +65,20 @@ const HowItWorks = () => {
         </div>
 
         <div className="mt-12 max-w-2xl mx-auto">
-          <div className="p-6 rounded-2xl bg-secondary/50 border border-border">
+          <div className="p-6 rounded-2xl bg-secondary border border-border">
             <h3 className="font-semibold text-foreground mb-4 text-center">Contoh Perhitungan Edge</h3>
             <div className="grid grid-cols-3 gap-4 text-center mb-4">
-              <div>
+              <div className="p-3 rounded-xl bg-card">
                 <div className="text-sm text-muted-foreground mb-1">Odds Pasar</div>
                 <div className="text-xl font-bold text-foreground">32%</div>
               </div>
-              <div>
+              <div className="p-3 rounded-xl bg-accent">
                 <div className="text-sm text-muted-foreground mb-1">AI Prediksi</div>
-                <div className="text-xl font-bold text-accent">78%</div>
+                <div className="text-xl font-bold text-success">78%</div>
               </div>
-              <div>
+              <div className="p-3 rounded-xl bg-success/10 border border-success/30">
                 <div className="text-sm text-muted-foreground mb-1">Edge Anda</div>
-                <div className="text-xl font-bold text-accent">+46%</div>
+                <div className="text-xl font-bold text-success">+46%</div>
               </div>
             </div>
             <p className="text-sm text-muted-foreground text-center">
