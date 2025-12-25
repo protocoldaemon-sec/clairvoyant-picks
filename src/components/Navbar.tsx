@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 import logoBlack from "@/assets/logo-black.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   const navLinks = [
     { label: "Markets", href: "#markets" },
@@ -18,7 +22,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-2 transition-transform duration-200 hover:scale-105">
-            <img src={logoBlack} alt="Clairvoyance" className="h-6 sm:h-7" />
+            <img 
+              src={resolvedTheme === "dark" ? logoWhite : logoBlack} 
+              alt="Clairvoyance" 
+              className="h-6 sm:h-7" 
+            />
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -34,6 +42,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <Button 
               variant="outline" 
               size="sm" 
@@ -49,12 +58,15 @@ const Navbar = () => {
             </Button>
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-foreground transition-transform duration-200 hover:scale-110 active:scale-95"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground transition-transform duration-200 hover:scale-110 active:scale-95"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
