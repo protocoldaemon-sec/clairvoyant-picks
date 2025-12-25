@@ -5,19 +5,19 @@ import { ArrowRight, ExternalLink, TrendingUp } from "lucide-react";
 const TopMarkets = () => {
   const markets = [
     {
-      question: "Akankah manusia mendarat di Mars sebelum kereta cepat California beroperasi?",
+      question: "Will a human land on Mars before California starts high-speed rail?",
       marketOdds: 32,
       aiWinRate: 78,
       edge: 203,
     },
     {
-      question: "Akankah inflasi turun di bawah 2.5% pada Q2 2025?",
+      question: "Will inflation fall below 2.5% by Q2 2025?",
       marketOdds: 45,
       aiWinRate: 68,
       edge: 51,
     },
     {
-      question: "Akankah Bitcoin mencapai $150k sebelum 2026?",
+      question: "Will Bitcoin hit $150k before 2026?",
       marketOdds: 28,
       aiWinRate: 52,
       edge: 86,
@@ -32,13 +32,13 @@ const TopMarkets = () => {
             <span className="w-2 h-2 rounded-full bg-success relative">
               <span className="absolute inset-0 rounded-full bg-success animate-ping opacity-75" />
             </span>
-            Update 2 menit lalu
+            Updated 2 minutes ago
           </div>
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-            Peluang Terbaik Saat Ini
+            Top Markets Right Now
           </h2>
           <p className="text-muted-foreground">
-            Top 10% pasar dengan edge tertinggi
+            Top 10% markets with highest edge
           </p>
         </div>
 
@@ -52,7 +52,7 @@ const TopMarkets = () => {
               <div className="flex items-center justify-between mb-3">
                 <Badge className="bg-accent text-foreground hover:bg-accent border-0 text-xs badge-shine">
                   <TrendingUp className="w-3 h-3 mr-1 transition-transform duration-200 group-hover:scale-110" />
-                  Edge Tinggi
+                  High Edge
                 </Badge>
               </div>
 
@@ -62,7 +62,7 @@ const TopMarkets = () => {
 
               <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                 <div className="p-2 rounded-lg bg-secondary transition-all duration-200 group-hover:bg-secondary/80">
-                  <div className="text-xs text-muted-foreground">Pasar</div>
+                  <div className="text-xs text-muted-foreground">Market</div>
                   <div className="font-semibold text-foreground">{market.marketOdds}%</div>
                 </div>
                 <div className="p-2 rounded-lg bg-accent transition-all duration-200 group-hover:bg-accent/80">
@@ -79,7 +79,7 @@ const TopMarkets = () => {
                 size="sm" 
                 className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90 btn-press group/btn transition-all duration-300 hover:gap-3"
               >
-                Taruhan Sekarang
+                Bet Now
                 <ExternalLink className="w-3 h-3 transition-transform duration-200 group-hover/btn:rotate-12" />
               </Button>
             </div>
@@ -91,7 +91,7 @@ const TopMarkets = () => {
             variant="outline" 
             className="gap-2 border-primary/30 hover:bg-accent btn-press group transition-all duration-300 hover:gap-3"
           >
-            Lihat Semua 50+ Pasar
+            View All 50+ Markets
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>

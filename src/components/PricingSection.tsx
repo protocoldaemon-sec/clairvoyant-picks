@@ -6,10 +6,10 @@ const PricingSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-            Bayar Hanya Saat Anda Menang
+            Pay Only When You Win
           </h2>
           <p className="text-muted-foreground">
-            Tidak ada biaya berlangganan. Gratis melihat semua analisis.
+            No subscription fees. Free to see all analysis.
           </p>
         </div>
 
@@ -19,16 +19,16 @@ const PricingSection = () => {
               <Gift className="w-6 h-6 text-foreground transition-transform duration-200 group-hover:rotate-12" />
             </div>
             <div className="text-4xl font-bold text-foreground mb-2 transition-transform duration-200 group-hover:scale-105">
-              GRATIS
+              FREE
             </div>
             <div className="text-muted-foreground mb-6">
-              Lihat semua analisis pasar
+              View all market analysis
             </div>
             <div className="space-y-3 text-left">
               {[
-                "Akses 50+ analisis pasar",
-                "Update setiap 10 menit",
-                "Tidak perlu kartu kredit"
+                "Access 50+ market analyses",
+                "Updates every 10 minutes",
+                "No credit card required"
               ].map((item, index) => (
                 <div 
                   key={index} 
@@ -43,17 +43,17 @@ const PricingSection = () => {
 
           <div className="p-8 rounded-2xl border-2 border-success/30 bg-accent text-center hover:border-success/50 hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group">
             <div className="text-xs font-medium text-success uppercase tracking-wide mb-4 transition-transform duration-200 group-hover:scale-105">
-              Saat Anda Menang
+              When You Win
             </div>
             <div className="text-4xl font-bold text-success mb-2 transition-transform duration-300 group-hover:scale-110">
               3.5%
             </div>
             <div className="text-muted-foreground mb-6">
-              dari kemenangan Anda saja
+              of your winnings only
             </div>
             <div className="p-4 rounded-xl bg-card text-sm text-muted-foreground transition-all duration-200 hover:shadow-soft">
-              <strong className="text-foreground">Kalah?</strong> Tidak bayar apa-apa. 
-              Kami hanya sukses jika Anda sukses.
+              <strong className="text-foreground">Lost your bet?</strong> Pay nothing. 
+              We only succeed when you succeed.
             </div>
           </div>
         </div>

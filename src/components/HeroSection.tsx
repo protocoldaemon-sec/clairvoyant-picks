@@ -3,15 +3,15 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const HeroSection = () => {
   const trustItems = [
-    "Analisis otomatis",
-    "50+ pasar dipantau",
-    "Update tiap 10 menit",
+    "Live analysis",
+    "50+ markets tracked",
+    "Updates every 10 min",
   ];
 
   const stats = [
-    { value: "50+", label: "Pasar Aktif" },
-    { value: "72%", label: "Rata-rata Win Rate" },
-    { value: "203%", label: "Edge Tertinggi", highlight: true },
+    { value: "50+", label: "Active Markets" },
+    { value: "72%", label: "Avg Win Rate" },
+    { value: "203%", label: "Top Edge", highlight: true },
   ];
 
   return (
@@ -22,11 +22,11 @@ const HeroSection = () => {
             <span className="w-2 h-2 rounded-full bg-success relative">
               <span className="absolute inset-0 rounded-full bg-success animate-ping opacity-75" />
             </span>
-            Analisis AI Real-time
+            AI Real-time Analysis
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-tight animate-fade-up stagger-1">
-            Temukan Peluang Terbaik di{" "}
+            Find the Best Bets on{" "}
             <span className="text-success relative inline-block">
               Kalshi
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
@@ -36,8 +36,8 @@ const HeroSection = () => {
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-up stagger-2">
-            Kami membantu Anda menemukan prediksi dengan peluang menang tertinggi. 
-            Tanpa ribet, langsung lihat mana yang paling menguntungkan.
+            We help you find predictions with the highest win rates. 
+            No guesswork—just see which opportunities are most profitable.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 animate-fade-up stagger-3">
@@ -45,7 +45,7 @@ const HeroSection = () => {
               size="lg" 
               className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-base h-12 px-8 btn-press group transition-all duration-300 hover:shadow-lg hover:gap-3"
             >
-              Lihat Peluang Terbaik
+              See Top Picks Now
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <Button 
@@ -53,7 +53,7 @@ const HeroSection = () => {
               size="lg" 
               className="w-full sm:w-auto text-base h-12 px-8 border-primary/30 hover:bg-accent btn-press transition-all duration-200"
             >
-              Pelajari Cara Kerjanya
+              How We Find Wins
             </Button>
           </div>
 

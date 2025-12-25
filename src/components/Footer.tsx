@@ -2,12 +2,12 @@ import logoBlack from "@/assets/logo-black.png";
 
 const Footer = () => {
   const links = [
-    { label: "Tentang", href: "#" },
-    { label: "Cara Kerja", href: "#how-it-works" },
-    { label: "Harga", href: "#pricing" },
+    { label: "About", href: "#" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
-    { label: "Syarat & Ketentuan", href: "#" },
-    { label: "Privasi", href: "#" },
+    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "#" },
   ];
 
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
           </a>
           
           <p className="text-sm text-muted-foreground max-w-md mb-6">
-            Clairvoyance by Daemon Protocol — Analisis AI untuk Prediction Markets
+            Clairvoyance by Daemon Protocol — AI Intelligence for Prediction Markets
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6 text-sm">
@@ -36,10 +36,10 @@ const Footer = () => {
 
           <div className="text-xs text-muted-foreground space-y-1">
             <p className="transition-colors duration-200 hover:text-foreground cursor-default">
-              Kami tidak terafiliasi dengan Kalshi. Ini adalah tools analisis saja.
+              We are not affiliated with Kalshi. This is an analytics tool only.
             </p>
             <p className="transition-colors duration-200 hover:text-foreground cursor-default">
-              Biaya platform: 3.5% hanya dari kemenangan
+              Platform fee: 3.5% on winnings only
             </p>
             <p className="transition-colors duration-200 hover:text-foreground cursor-default">
               © 2025 Clairvoyance. All rights reserved.
