@@ -28,35 +28,43 @@ const ValueProposition = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="p-6 rounded-2xl border border-border bg-card">
+          <div className="p-6 rounded-2xl border border-border bg-card hover:shadow-card transition-all duration-300 group">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                 <X className="w-4 h-4 text-destructive" />
               </div>
               <h3 className="font-semibold text-foreground">Tanpa Clairvoyance</h3>
             </div>
             <div className="space-y-4">
               {withoutItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <X className="w-5 h-5 text-destructive/60 mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{item}</span>
+                <div 
+                  key={index} 
+                  className="flex items-start gap-3 group/item cursor-default"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <X className="w-5 h-5 text-destructive/60 mt-0.5 flex-shrink-0 transition-transform duration-200 group-hover/item:scale-110" />
+                  <span className="text-muted-foreground transition-colors duration-200 group-hover/item:text-foreground">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl border-2 border-success/30 bg-accent">
+          <div className="p-6 rounded-2xl border-2 border-success/30 bg-accent hover:border-success/50 hover:shadow-card transition-all duration-300 group">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                 <Check className="w-4 h-4 text-success" />
               </div>
               <h3 className="font-semibold text-foreground">Dengan Clairvoyance</h3>
             </div>
             <div className="space-y-4">
               {withItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{item}</span>
+                <div 
+                  key={index} 
+                  className="flex items-start gap-3 group/item cursor-default"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <Check className="w-5 h-5 text-success mt-0.5 flex-shrink-0 transition-transform duration-200 group-hover/item:scale-110" />
+                  <span className="text-foreground transition-transform duration-200 group-hover/item:translate-x-1">{item}</span>
                 </div>
               ))}
             </div>
@@ -64,8 +72,8 @@ const ValueProposition = () => {
         </div>
 
         <div className="text-center mt-10">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent border border-success/30 text-foreground font-medium">
-            <ArrowRight className="w-4 h-4 text-success" />
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent border border-success/30 text-foreground font-medium hover:border-success/50 hover:shadow-lg transition-all duration-300 cursor-default group">
+            <ArrowRight className="w-4 h-4 text-success transition-transform duration-300 group-hover:translate-x-1" />
             Temukan peluang terbaik dalam 5 menit
           </div>
         </div>

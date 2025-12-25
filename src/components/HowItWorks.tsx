@@ -45,18 +45,24 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <div 
                 key={index} 
-                className="relative p-6 rounded-2xl border border-border bg-card hover:shadow-card transition-shadow"
+                className="relative p-6 rounded-2xl border border-border bg-card card-interactive group"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-foreground" />
+                    <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center transition-all duration-300 group-hover:bg-success/20 group-hover:scale-110">
+                      <step.icon className="w-6 h-6 text-foreground transition-colors duration-300 group-hover:text-success" />
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-success mb-1">Langkah {step.number}</div>
-                    <h3 className="font-semibold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                    <div className="text-xs font-medium text-success mb-1 transition-transform duration-200 group-hover:translate-x-1">
+                      Langkah {step.number}
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-2 transition-colors duration-200">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-200 group-hover:text-foreground/80">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -65,20 +71,20 @@ const HowItWorks = () => {
         </div>
 
         <div className="mt-12 max-w-2xl mx-auto">
-          <div className="p-6 rounded-2xl bg-secondary border border-border">
+          <div className="p-6 rounded-2xl bg-secondary border border-border hover:shadow-card transition-all duration-300">
             <h3 className="font-semibold text-foreground mb-4 text-center">Contoh Perhitungan Edge</h3>
             <div className="grid grid-cols-3 gap-4 text-center mb-4">
-              <div className="p-3 rounded-xl bg-card">
+              <div className="p-3 rounded-xl bg-card hover:shadow-soft transition-all duration-200 group cursor-default">
                 <div className="text-sm text-muted-foreground mb-1">Odds Pasar</div>
-                <div className="text-xl font-bold text-foreground">32%</div>
+                <div className="text-xl font-bold text-foreground transition-transform duration-200 group-hover:scale-110">32%</div>
               </div>
-              <div className="p-3 rounded-xl bg-accent">
+              <div className="p-3 rounded-xl bg-accent hover:shadow-soft transition-all duration-200 group cursor-default">
                 <div className="text-sm text-muted-foreground mb-1">AI Prediksi</div>
-                <div className="text-xl font-bold text-success">78%</div>
+                <div className="text-xl font-bold text-success transition-transform duration-200 group-hover:scale-110">78%</div>
               </div>
-              <div className="p-3 rounded-xl bg-success/10 border border-success/30">
+              <div className="p-3 rounded-xl bg-success/10 border border-success/30 hover:border-success/50 transition-all duration-200 group cursor-default">
                 <div className="text-sm text-muted-foreground mb-1">Edge Anda</div>
-                <div className="text-xl font-bold text-success">+46%</div>
+                <div className="text-xl font-bold text-success transition-transform duration-200 group-hover:scale-110">+46%</div>
               </div>
             </div>
             <p className="text-sm text-muted-foreground text-center">
