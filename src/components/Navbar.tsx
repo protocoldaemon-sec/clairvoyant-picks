@@ -7,9 +7,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: "Pasar", href: "#markets" },
-    { label: "Cara Kerja", href: "#how-it-works" },
-    { label: "Harga", href: "#pricing" },
+    { label: "Markets", href: "#markets" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -39,13 +39,13 @@ const Navbar = () => {
               size="sm" 
               className="border-primary/30 hover:bg-accent hover:border-accent transition-all duration-200 btn-press"
             >
-              Masuk
+              Log In
             </Button>
             <Button 
               size="sm" 
               className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 btn-press hover:shadow-lg"
             >
-              Daftar Gratis
+              Sign Up Free
             </Button>
           </div>
 
@@ -73,10 +73,10 @@ const Navbar = () => {
               ))}
               <div className="flex gap-2 pt-2">
                 <Button variant="outline" size="sm" className="flex-1 border-primary/30 hover:bg-accent btn-press">
-                  Masuk
+                  Log In
                 </Button>
                 <Button size="sm" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 btn-press">
-                  Daftar Gratis
+                  Sign Up Free
                 </Button>
               </div>
             </div>

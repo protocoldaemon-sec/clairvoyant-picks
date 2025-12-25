@@ -2,17 +2,17 @@ import { X, Check, ArrowRight } from "lucide-react";
 
 const ValueProposition = () => {
   const withoutItems = [
-    "Scroll 50+ pasar satu-satu",
-    "Tebak-tebakan mana yang bagus",
-    "Lewatkan peluang terbaik",
-    "Buang waktu berjam-jam",
+    "Scroll through 50+ markets manually",
+    "Guess which ones have edge",
+    "Miss the best opportunities",
+    "Waste hours analyzing data",
   ];
 
   const withItems = [
-    "Langsung lihat yang terbaik saja",
-    "AI hitung peluang menang untuk Anda",
-    "Update otomatis tiap 10 menit",
-    "Satu klik ke Kalshi",
+    "See only the top 10% highest edge",
+    "AI-calculated win rates",
+    "Updated every 10 minutes",
+    "One click to Kalshi",
   ];
 
   return (
@@ -20,10 +20,10 @@ const ValueProposition = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-            Mengapa Pakai Clairvoyance?
+            Why Use Clairvoyance?
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Hemat waktu dan tingkatkan peluang menang dengan analisis AI
+            Save time and increase your win rate with AI-powered analysis
           </p>
         </div>
 
@@ -33,7 +33,7 @@ const ValueProposition = () => {
               <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                 <X className="w-4 h-4 text-destructive" />
               </div>
-              <h3 className="font-semibold text-foreground">Tanpa Clairvoyance</h3>
+              <h3 className="font-semibold text-foreground">Without Clairvoyance</h3>
             </div>
             <div className="space-y-4">
               {withoutItems.map((item, index) => (
@@ -54,7 +54,7 @@ const ValueProposition = () => {
               <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                 <Check className="w-4 h-4 text-success" />
               </div>
-              <h3 className="font-semibold text-foreground">Dengan Clairvoyance</h3>
+              <h3 className="font-semibold text-foreground">With Clairvoyance</h3>
             </div>
             <div className="space-y-4">
               {withItems.map((item, index) => (
@@ -74,7 +74,7 @@ const ValueProposition = () => {
         <div className="text-center mt-10">
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent border border-success/30 text-foreground font-medium hover:border-success/50 hover:shadow-lg transition-all duration-300 cursor-default group">
             <ArrowRight className="w-4 h-4 text-success transition-transform duration-300 group-hover:translate-x-1" />
-            Temukan peluang terbaik dalam 5 menit
+            Find the best bets in 5 minutes
           </div>
         </div>
       </div>

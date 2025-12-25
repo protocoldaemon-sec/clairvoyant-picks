@@ -8,28 +8,28 @@ import {
 const FAQSection = () => {
   const faqs = [
     {
-      question: "Pasar apa saja yang dipantau?",
-      answer: "Kami memantau 50+ pasar prediksi di Kalshi, termasuk politik, ekonomi, teknologi, dan berbagai event penting lainnya.",
+      question: "What markets do you track?",
+      answer: "We track 50+ prediction markets on Kalshi, including politics, economics, technology, and various important events.",
     },
     {
-      question: "Seberapa sering data di-update?",
-      answer: "Setiap 10 menit. Sistem kami terus memantau dan menghitung ulang peluang berdasarkan data terbaru.",
+      question: "How often is the data updated?",
+      answer: "Every 10 minutes. Our system continuously monitors and recalculates odds based on the latest data.",
     },
     {
-      question: "Apa itu \"Edge\"?",
-      answer: "Edge adalah selisih antara prediksi AI kami dengan odds pasar. Semakin tinggi edge, semakin besar potensi keuntungan Anda dibanding risiko.",
+      question: "What does \"Edge\" mean?",
+      answer: "Edge is the difference between our AI prediction and market odds. The higher the edge, the greater your potential profit relative to risk.",
     },
     {
-      question: "Apakah saya taruhan melalui Clairvoyance?",
-      answer: "Tidak. Kami hanya menampilkan analisis. Semua taruhan dilakukan langsung di platform Kalshi. Kami akan mengarahkan Anda ke sana.",
+      question: "Do I bet through Clairvoyance?",
+      answer: "No. We only display analysis. All betting is done directly on the Kalshi platform. We'll redirect you there.",
     },
     {
-      question: "Seberapa akurat prediksi AI-nya?",
-      answer: "AI kami memiliki rata-rata win rate 72% di semua prediksi, jauh lebih tinggi dari odds pasar pada umumnya.",
+      question: "How accurate is the AI?",
+      answer: "Our AI has a 72% average win rate across all predictions, significantly higher than typical market odds.",
     },
     {
-      question: "Berapa minimum taruhan?",
-      answer: "Minimum taruhan ditentukan oleh Kalshi, bukan kami. Untuk melihat analisis di Clairvoyance, tidak ada minimum sama sekali - gratis!",
+      question: "What's the minimum bet?",
+      answer: "Minimum bet is determined by Kalshi, not us. To view analysis on Clairvoyance, there's no minimum at all—it's free!",
     },
   ];
 
@@ -38,10 +38,10 @@ const FAQSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-            Pertanyaan Umum
+            Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground">
-            Punya pertanyaan? Kami punya jawabannya.
+            Got questions? We've got answers.
           </p>
         </div>
 
