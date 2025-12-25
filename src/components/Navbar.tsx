@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import WalletButton from "./WalletButton";
 import logoBlack from "@/assets/logo-black.png";
 import logoWhite from "@/assets/logo-white.png";
 
@@ -43,19 +43,7 @@ const Navbar = () => {
 
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="border-primary/30 hover:bg-accent hover:border-accent transition-all duration-200 btn-press"
-            >
-              Log In
-            </Button>
-            <Button 
-              size="sm" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 btn-press hover:shadow-lg"
-            >
-              Sign Up Free
-            </Button>
+            <WalletButton />
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
@@ -83,13 +71,8 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <div className="flex gap-2 pt-2">
-                <Button variant="outline" size="sm" className="flex-1 border-primary/30 hover:bg-accent btn-press">
-                  Log In
-                </Button>
-                <Button size="sm" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 btn-press">
-                  Sign Up Free
-                </Button>
+              <div className="pt-2">
+                <WalletButton />
               </div>
             </div>
           </div>
