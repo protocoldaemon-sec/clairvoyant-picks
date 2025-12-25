@@ -1,104 +1,90 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, TrendingUp } from "lucide-react";
 
 const TopMarkets = () => {
   const markets = [
     {
-      question: "Will a human land on Mars before California starts high-speed rail?",
+      question: "Akankah manusia mendarat di Mars sebelum kereta cepat California beroperasi?",
       marketOdds: 32,
       aiWinRate: 78,
       edge: 203,
-      confidence: "High",
     },
     {
-      question: "Will inflation fall below 2.5% by Q2 2025?",
+      question: "Akankah inflasi turun di bawah 2.5% pada Q2 2025?",
       marketOdds: 45,
       aiWinRate: 68,
       edge: 51,
-      confidence: "High",
     },
     {
-      question: "Will Bitcoin hit $150k before 2026?",
+      question: "Akankah Bitcoin mencapai $150k sebelum 2026?",
       marketOdds: 28,
       aiWinRate: 52,
       edge: 86,
-      confidence: "Medium",
-    },
-    {
-      question: "Will the Fed cut rates 3+ times in 2025?",
-      marketOdds: 55,
-      aiWinRate: 72,
-      edge: 31,
-      confidence: "High",
     },
   ];
 
   return (
-    <section id="markets" className="py-16 lg:py-24 bg-background">
+    <section id="markets" className="py-12 lg:py-20 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 lg:mb-12">
-          <div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-2">
-              Top Markets Right Now
-            </h2>
-            <p className="text-muted-foreground flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Updated 2 minutes ago — Showing top 10% by edge
-            </p>
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 text-sm text-accent font-medium mb-3">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            Update 2 menit lalu
           </div>
-          <Button variant="outline" className="gap-2">
-            View All 50 Markets
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-3">
+            Peluang Terbaik Saat Ini
+          </h2>
+          <p className="text-muted-foreground">
+            Top 10% pasar dengan edge tertinggi
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
           {markets.map((market, index) => (
             <div
               key={index}
-              className="p-6 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-hover transition-all"
+              className="p-5 rounded-2xl border border-border bg-card hover:shadow-card transition-all"
             >
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <Badge variant="outline" className="border-accent/50 text-accent bg-accent/10">
-                  HIGH EDGE
+              <div className="flex items-center justify-between mb-3">
+                <Badge variant="outline" className="border-accent/50 text-accent bg-accent/5 text-xs">
+                  <TrendingUp className="w-3 h-3 mr-1" />
+                  Edge Tinggi
                 </Badge>
-                <span className="text-xs text-muted-foreground">Kalshi</span>
               </div>
 
-              <h3 className="text-lg font-semibold text-foreground mb-6 line-clamp-2">
+              <h3 className="text-sm font-medium text-foreground mb-4 line-clamp-2 min-h-[40px]">
                 {market.question}
               </h3>
 
-              <div className="flex items-center gap-4 mb-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">Market:</span>
-                  <span className="font-medium text-foreground">{market.marketOdds}%</span>
+              <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                <div className="p-2 rounded-lg bg-secondary">
+                  <div className="text-xs text-muted-foreground">Pasar</div>
+                  <div className="font-semibold text-foreground">{market.marketOdds}%</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">AI:</span>
-                  <span className="font-medium text-accent">{market.aiWinRate}%</span>
+                <div className="p-2 rounded-lg bg-accent/10">
+                  <div className="text-xs text-muted-foreground">AI</div>
+                  <div className="font-semibold text-accent">{market.aiWinRate}%</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">Confidence:</span>
-                  <span className={`font-medium ${market.confidence === "High" ? "text-accent" : "text-warning"}`}>
-                    {market.confidence}
-                  </span>
+                <div className="p-2 rounded-lg bg-accent/20">
+                  <div className="text-xs text-muted-foreground">Edge</div>
+                  <div className="font-semibold text-accent">+{market.edge}%</div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-xs text-muted-foreground mb-1">Edge</div>
-                  <div className="text-2xl font-bold text-gradient-edge">+{market.edge}%</div>
-                </div>
-                <Button size="sm" className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90">
-                  Bet Now
-                  <ExternalLink className="w-3 h-3" />
-                </Button>
-              </div>
+              <Button size="sm" className="w-full gap-2 bg-accent text-accent-foreground hover:bg-accent/90">
+                Taruhan Sekarang
+                <ExternalLink className="w-3 h-3" />
+              </Button>
             </div>
           ))}
+        </div>
+
+        <div className="text-center">
+          <Button variant="outline" className="gap-2">
+            Lihat Semua 50+ Pasar
+            <ArrowRight className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>

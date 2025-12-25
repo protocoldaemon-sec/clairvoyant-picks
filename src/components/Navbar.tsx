@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Wallet } from "lucide-react";
-import logoWhite from "@/assets/logo-white.png";
+import { Menu, X } from "lucide-react";
+import logoBlack from "@/assets/logo-black.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: "Markets", href: "#markets" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Pasar", href: "#markets" },
+    { label: "Cara Kerja", href: "#how-it-works" },
+    { label: "Harga", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-2">
-            <img src={logoWhite} alt="Clairvoyance" className="h-7 sm:h-8 invert dark:invert-0" />
+            <img src={logoBlack} alt="Clairvoyance" className="h-6 sm:h-7" />
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -33,10 +33,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" size="sm" className="gap-2">
-              <Wallet className="w-4 h-4" />
-              Connect Wallet
+          <div className="hidden lg:flex items-center gap-3">
+            <Button variant="outline" size="sm">
+              Masuk
+            </Button>
+            <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              Daftar Gratis
             </Button>
           </div>
 
@@ -49,8 +51,8 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden pb-6 pt-2 border-t border-border">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden pb-4 pt-2 border-t border-border">
+            <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -61,10 +63,14 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="outline" size="sm" className="gap-2 w-fit">
-                <Wallet className="w-4 h-4" />
-                Connect Wallet
-              </Button>
+              <div className="flex gap-2 pt-2">
+                <Button variant="outline" size="sm" className="flex-1">
+                  Masuk
+                </Button>
+                <Button size="sm" className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90">
+                  Daftar Gratis
+                </Button>
+              </div>
             </div>
           </div>
         )}
