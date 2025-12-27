@@ -9,10 +9,10 @@ const ValueProposition = () => {
   ];
 
   const withItems = [
-    "See only the top 10% highest edge",
-    "AI-calculated win rates",
-    "Updated every 10 minutes",
-    "One click to Kalshi",
+    "See only highest edge opportunities",
+    "AI-calculated probabilities",
+    "Updated every 5 minutes",
+    "Kalshi & Binance signals",
   ];
 
   return (

@@ -8,6 +8,18 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      '/api': {
+        target: 'https://clairvoyance-production.up.railway.app',
+        changeOrigin: true,
+        secure: true
+      },
+      '/ws': {
+        target: 'wss://clairvoyance-production.up.railway.app',
+        ws: true,
+        changeOrigin: true
+      }
+    }
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

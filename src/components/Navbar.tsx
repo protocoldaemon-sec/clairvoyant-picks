@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import WalletButton from "./WalletButton";
@@ -39,6 +40,12 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/dashboard"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 link-underline py-1"
+            >
+              Dashboard
+            </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -71,6 +78,13 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <Link
+                to="/dashboard"
+                onClick={() => setIsOpen(false)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-200 py-2 hover:translate-x-1"
+              >
+                Dashboard
+              </Link>
               <div className="pt-2">
                 <WalletButton />
               </div>
