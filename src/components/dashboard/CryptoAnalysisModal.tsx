@@ -3,11 +3,35 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { InfoTooltip } from '@/components/ui/info-tooltip';
 import { cn } from '@/lib/utils';
 import { formatDateTime } from '@/lib/date';
 import { API_URL } from '@/lib/config';
 import { useAuth } from '@/components/AuthProvider';
 import CryptoChart from './CryptoChart';
+
+// Tooltip texts for crypto analysis
+const tips = {
+  stopLoss: 'Price level to exit if trade goes against you. Limits potential loss.',
+  takeProfit: 'Target price to take profits. Based on technical analysis.',
+  rsi: 'Relative Strength Index (0-100). Above 70 = overbought, below 30 = oversold.',
+  macd: 'Moving Average Convergence Divergence. Positive = bullish momentum, negative = bearish.',
+  bollingerB: 'Bollinger %B shows price position within bands. Above 1 = overbought, below 0 = oversold.',
+  emaTrend: 'EMA crossover trend. Bullish when short EMA > long EMA.',
+  upsideProb: 'Probability that price will be higher in 24 hours based on Monte Carlo simulation.',
+  expectedReturn: 'Average expected return from 5000+ simulated price paths.',
+  var95: 'Value at Risk: Worst expected price in 95% of scenarios.',
+  volatility: 'Annualized price volatility. Higher = more risk and potential reward.',
+  bullCase: 'Optimistic price target (top 10% of simulations).',
+  baseCase: 'Most likely price target (median of simulations).',
+  bearCase: 'Pessimistic price target (bottom 10% of simulations).',
+  ema9: 'Fast EMA (9 periods). Used for short-term trend.',
+  ema21: 'Medium EMA (21 periods). Used for intermediate trend.',
+  ema50: 'Slow EMA (50 periods). Used for long-term trend.',
+  atr: 'Average True Range. Measures volatility in dollar terms.',
+  confidence: 'AI confidence in the signal based on indicator agreement.',
+  strength: 'Signal strength based on how many indicators agree.',
+};
 
 interface CryptoRecommendation {
   name: string;
@@ -266,11 +290,15 @@ export default function CryptoAnalysisModal({ isOpen, onClose, recommendation, o
                 <p className={cn('text-xl font-bold', actionColor)}>{signal.action}</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-muted-foreground">Confidence</p>
+                <p className="text-xs text-muted-foreground flex items-center justify-center">
+                  Confidence <InfoTooltip text={tips.confidence} />
+                </p>
                 <p className="text-xl font-bold">{(signal.confidence * 100).toFixed(0)}%</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-muted-foreground">Strength</p>
+                <p className="text-xs text-muted-foreground flex items-center justify-center">
+                  Strength <InfoTooltip text={tips.strength} />
+                </p>
                 <p className="text-lg font-bold">{signal.strength}</p>
               </div>
             </div>
@@ -296,11 +324,15 @@ export default function CryptoAnalysisModal({ isOpen, onClose, recommendation, o
               {signal.action !== 'HOLD' && position.stop_loss && (
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div>
-                    <p className="text-muted-foreground text-xs">Stop Loss</p>
+                    <p className="text-muted-foreground text-xs flex items-center">
+                      Stop Loss <InfoTooltip text={tips.stopLoss} />
+                    </p>
                     <p className="text-destructive font-medium">${position.stop_loss?.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-xs">Take Profit</p>
+                    <p className="text-muted-foreground text-xs flex items-center">
+                      Take Profit <InfoTooltip text={tips.takeProfit} />
+                    </p>
                     <p className="text-success font-medium">${position.take_profit_1?.toLocaleString()}</p>
                   </div>
                 </div>
@@ -312,21 +344,29 @@ export default function CryptoAnalysisModal({ isOpen, onClose, recommendation, o
               <h4 className="text-xs text-muted-foreground mb-2">TECHNICAL INDICATORS</h4>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <div>
-                  <p className="text-muted-foreground text-xs">RSI (14)</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    RSI (14) <InfoTooltip text={tips.rsi} />
+                  </p>
                   <p className="font-medium">{indicators.rsi?.toFixed(1) ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">MACD</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    MACD <InfoTooltip text={tips.macd} />
+                  </p>
                   <p className={cn('font-medium', (indicators.macd?.histogram || 0) > 0 ? 'text-success' : 'text-destructive')}>
                     {indicators.macd?.histogram?.toFixed(4) ?? '-'}
                   </p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">Bollinger %B</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    Bollinger %B <InfoTooltip text={tips.bollingerB} />
+                  </p>
                   <p className="font-medium">{indicators.bollinger?.percent_b?.toFixed(2) ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">EMA Trend</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    EMA Trend <InfoTooltip text={tips.emaTrend} />
+                  </p>
                   <p className={cn(
                     'font-medium',
                     indicators.ema_trend === 'BULLISH' ? 'text-success' : indicators.ema_trend === 'BEARISH' ? 'text-destructive' : ''
@@ -342,37 +382,45 @@ export default function CryptoAnalysisModal({ isOpen, onClose, recommendation, o
               <h4 className="text-xs text-muted-foreground mb-2">MONTE CARLO (24H)</h4>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <div>
-                  <p className="text-muted-foreground text-xs">Upside Prob</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    Upside Prob <InfoTooltip text={tips.upsideProb} />
+                  </p>
                   <p className={cn('font-medium', (simulation.upside_prob || 0) > 0.5 ? 'text-success' : 'text-destructive')}>
                     {((simulation.upside_prob || 0) * 100).toFixed(1)}%
                   </p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">Expected Return</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    Expected Return <InfoTooltip text={tips.expectedReturn} />
+                  </p>
                   <p className={cn('font-medium', (simulation.expected_return_pct || 0) > 0 ? 'text-success' : 'text-destructive')}>
                     {(simulation.expected_return_pct || 0) > 0 ? '+' : ''}{simulation.expected_return_pct?.toFixed(2) ?? '0'}%
                   </p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">VaR 95%</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    VaR 95% <InfoTooltip text={tips.var95} />
+                  </p>
                   <p className="text-destructive font-medium">${simulation.var_95?.toLocaleString() ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs">Volatility</p>
+                  <p className="text-muted-foreground text-xs flex items-center">
+                    Volatility <InfoTooltip text={tips.volatility} />
+                  </p>
                   <p className="font-medium">{((simulation.volatility_annual || 0) * 100).toFixed(1)}%</p>
                 </div>
               </div>
               {simulation.price_targets && (
                 <div className="mt-2 grid grid-cols-3 gap-1 text-xs">
-                  <div className="bg-success/20 rounded p-1 text-center">
+                  <div className="bg-success/20 rounded p-1 text-center" title={tips.bullCase}>
                     <p className="text-muted-foreground">Bull</p>
                     <p className="text-success">${simulation.price_targets.bull_case?.toLocaleString()}</p>
                   </div>
-                  <div className="bg-muted/50 rounded p-1 text-center">
+                  <div className="bg-muted/50 rounded p-1 text-center" title={tips.baseCase}>
                     <p className="text-muted-foreground">Base</p>
                     <p>${simulation.price_targets.base_case?.toLocaleString()}</p>
                   </div>
-                  <div className="bg-destructive/20 rounded p-1 text-center">
+                  <div className="bg-destructive/20 rounded p-1 text-center" title={tips.bearCase}>
                     <p className="text-muted-foreground">Bear</p>
                     <p className="text-destructive">${simulation.price_targets.bear_case?.toLocaleString()}</p>
                   </div>
@@ -400,19 +448,27 @@ export default function CryptoAnalysisModal({ isOpen, onClose, recommendation, o
               <h4 className="text-xs text-muted-foreground mb-2">EMA VALUES</h4>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <p className="text-muted-foreground">EMA 9</p>
+                  <p className="text-muted-foreground flex items-center">
+                    EMA 9 <InfoTooltip text={tips.ema9} />
+                  </p>
                   <p className="text-foreground">${indicators.ema_9?.toLocaleString() ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">EMA 21</p>
+                  <p className="text-muted-foreground flex items-center">
+                    EMA 21 <InfoTooltip text={tips.ema21} />
+                  </p>
                   <p className="text-foreground">${indicators.ema_21?.toLocaleString() ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">EMA 50</p>
+                  <p className="text-muted-foreground flex items-center">
+                    EMA 50 <InfoTooltip text={tips.ema50} />
+                  </p>
                   <p className="text-foreground">${indicators.ema_50?.toLocaleString() ?? '-'}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">ATR</p>
+                  <p className="text-muted-foreground flex items-center">
+                    ATR <InfoTooltip text={tips.atr} />
+                  </p>
                   <p className="text-foreground">${indicators.atr?.toLocaleString() ?? '-'} ({indicators.atr_pct?.toFixed(1) ?? '0'}%)</p>
                 </div>
               </div>
