@@ -2,8 +2,8 @@
 const isDev = import.meta.env.DEV;
 
 // In development, use proxy (/api). In production, use full URL with /api prefix.
-export const API_URL = isDev 
-  ? '/api' 
+export const API_URL = isDev
+  ? '/api'
   : `${import.meta.env.VITE_API_URL || 'https://clairvoyance-production.up.railway.app'}/api`;
 
 export const WS_URL = isDev
