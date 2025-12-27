@@ -1,18 +1,21 @@
+import { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Button } from '@/components/ui/button';
 import { Wallet, LogOut, Copy, Check } from 'lucide-react';
-import { useState } from 'react';
+import { useAuth } from '@/components/AuthProvider';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { WalletConnectModal } from './WalletConnectModal';
 
 const WalletButton = () => {
   const { publicKey, disconnect, connected } = useWallet();
+  const { logout, isAuthenticated } = useAuth();
   const [copied, setCopied] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const truncateAddress = (address: string) => {
     return `${address.slice(0, 4)}...${address.slice(-4)}`;
@@ -26,34 +29,38 @@ const WalletButton = () => {
     }
   };
 
-  if (!connected) {
+  const handleDisconnect = () => {
+    disconnect();
+    logout();
+  };
+
+  // Show connect button if not connected or not authenticated
+  if (!connected || !isAuthenticated) {
     return (
-      <WalletMultiButton className="!bg-primary !text-primary-foreground hover:!bg-primary/90 !rounded-md !h-9 !px-4 !text-sm !font-medium !transition-all !duration-200 btn-press hover:!shadow-lg" />
+      <>
+        <Button onClick={() => setShowModal(true)} className="gap-2">
+          <Wallet className="h-4 w-4" />
+          Connect Wallet
+        </Button>
+        <WalletConnectModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      </>
     );
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="outline" 
-          size="sm"
-          className="gap-2 border-primary/30 hover:bg-accent hover:border-accent transition-all duration-200 btn-press"
-        >
+        <Button variant="outline" size="sm" className="gap-2 border-primary/30 hover:bg-accent">
           <Wallet className="h-4 w-4" />
           {publicKey && truncateAddress(publicKey.toBase58())}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
         <DropdownMenuItem onClick={copyAddress} className="cursor-pointer">
-          {copied ? (
-            <Check className="h-4 w-4 mr-2 text-green-500" />
-          ) : (
-            <Copy className="h-4 w-4 mr-2" />
-          )}
+          {copied ? <Check className="h-4 w-4 mr-2 text-green-500" /> : <Copy className="h-4 w-4 mr-2" />}
           {copied ? 'Copied!' : 'Copy Address'}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={disconnect} className="cursor-pointer text-destructive">
+        <DropdownMenuItem onClick={handleDisconnect} className="cursor-pointer text-destructive">
           <LogOut className="h-4 w-4 mr-2" />
           Disconnect
         </DropdownMenuItem>

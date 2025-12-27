@@ -67,51 +67,51 @@
   }
 
   .dark {
-    --background: 247 31% 12%;
-    --foreground: 177 50% 95%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
 
-    --card: 247 28% 16%;
-    --card-foreground: 177 50% 95%;
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 247 28% 16%;
-    --popover-foreground: 177 50% 95%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 177 50% 93%;
-    --primary-foreground: 247 31% 12%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 247 25% 22%;
-    --secondary-foreground: 177 50% 95%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 247 25% 22%;
-    --muted-foreground: 180 30% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 180 48% 75%;
-    --accent-foreground: 247 31% 12%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 247 20% 25%;
-    --input: 247 20% 25%;
-    --ring: 180 48% 65%;
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 217 91% 60%;
 
-    --success: 160 60% 50%;
-    --success-foreground: 247 31% 12%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
     
     --warning: 38 92% 55%;
-    --warning-foreground: 247 31% 12%;
+    --warning-foreground: 222 47% 11%;
 
-    --edge: 160 60% 50%;
-    --edge-glow: 160 70% 55%;
+    --edge: 142 71% 45%;
+    --edge-glow: 142 76% 50%;
 
-    --sidebar-background: 247 28% 14%;
-    --sidebar-foreground: 177 50% 95%;
-    --sidebar-primary: 177 50% 93%;
-    --sidebar-primary-foreground: 247 31% 12%;
-    --sidebar-accent: 247 25% 22%;
-    --sidebar-accent-foreground: 177 50% 95%;
-    --sidebar-border: 247 20% 25%;
-    --sidebar-ring: 180 48% 65%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 25%;
+    --sidebar-ring: 217 91% 60%;
 
     --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.2);
     --shadow-card: 0 4px 16px hsl(0 0% 0% / 0.3);
@@ -369,4 +369,86 @@
 
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
+}
+
+
+/* Custom Scrollbar - Theme Aware */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--muted));
+}
+
+/* Hidden Scrollbar - still scrollable */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Global scrollbar styling */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Firefox global */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.2) hsl(var(--background));
+}
+
+
+/* Solana Wallet Button Override */
+.wallet-adapter-button {
+  height: 32px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+}
+
+.wallet-adapter-button-trigger {
+  height: 32px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+}
+
+.wallet-adapter-button i {
+  width: 16px !important;
+  height: 16px !important;
 }

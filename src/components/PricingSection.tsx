@@ -1,61 +1,90 @@
-import { Check, Gift } from "lucide-react";
+import { Check, Sparkles, Zap, Crown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const PricingSection = () => {
+  const plans = [
+    {
+      name: 'Free Trial',
+      price: '$0',
+      period: '/3 days',
+      icon: Sparkles,
+      features: ['5 signals per day', 'Basic analysis'],
+      buttonText: 'Start Free Trial',
+      popular: false,
+    },
+    {
+      name: 'Premium',
+      price: '$39',
+      period: '/month',
+      icon: Zap,
+      features: ['50% of all signals', 'Full analysis', 'Email support'],
+      buttonText: 'Subscribe',
+      popular: true,
+    },
+    {
+      name: 'Pro',
+      price: '$69',
+      period: '/month',
+      icon: Crown,
+      features: ['100% of all signals', 'Full analysis', 'Priority support', 'API access'],
+      buttonText: 'Subscribe',
+      popular: false,
+    },
+  ];
+
   return (
     <section id="pricing" className="py-12 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-            Pay Only When You Win
-          </h2>
-          <p className="text-muted-foreground">
-            No subscription fees. Free to see all analysis.
-          </p>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-3">Simple Pricing</h2>
+          <p className="text-muted-foreground">Choose the plan that fits your trading style</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          <div className="p-8 rounded-2xl border border-border bg-card text-center hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group">
-            <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
-              <Gift className="w-6 h-6 text-foreground transition-transform duration-200 group-hover:rotate-12" />
-            </div>
-            <div className="text-4xl font-bold text-foreground mb-2 transition-transform duration-200 group-hover:scale-105">
-              FREE
-            </div>
-            <div className="text-muted-foreground mb-6">
-              View all market analysis
-            </div>
-            <div className="space-y-3 text-left">
-              {[
-                "Access 50+ market analyses",
-                "Updates every 10 minutes",
-                "No credit card required"
-              ].map((item, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center gap-2 text-sm group/item cursor-default"
-                >
-                  <Check className="w-4 h-4 text-success transition-transform duration-200 group-hover/item:scale-110" />
-                  <span className="text-muted-foreground transition-colors duration-200 group-hover/item:text-foreground">{item}</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`p-6 rounded-2xl border bg-card text-center hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group ${
+                plan.popular ? 'border-2 border-success/50 relative' : 'border-border'
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-success text-success-foreground text-xs font-medium rounded-full">
+                  Popular
                 </div>
-              ))}
-            </div>
-          </div>
+              )}
 
-          <div className="p-8 rounded-2xl border-2 border-success/30 bg-accent text-center hover:border-success/50 hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group">
-            <div className="text-xs font-medium text-success uppercase tracking-wide mb-4 transition-transform duration-200 group-hover:scale-105">
-              When You Win
+              <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110">
+                <plan.icon className={`w-5 h-5 ${plan.popular ? 'text-success' : 'text-foreground'}`} />
+              </div>
+
+              <h3 className="text-lg font-semibold text-foreground mb-2">{plan.name}</h3>
+
+              <div className="mb-4">
+                <span className="text-3xl font-bold text-foreground">{plan.price}</span>
+                <span className="text-sm text-muted-foreground">{plan.period}</span>
+              </div>
+
+              <div className="space-y-2 text-left mb-5">
+                {plan.features.map((feature, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm">
+                    <Check className="w-4 h-4 text-success flex-shrink-0" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button
+                className={`w-full ${
+                  plan.popular
+                    ? 'bg-success hover:bg-success/90 text-success-foreground'
+                    : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                }`}
+              >
+                {plan.buttonText}
+              </Button>
             </div>
-            <div className="text-4xl font-bold text-success mb-2 transition-transform duration-300 group-hover:scale-110">
-              3.5%
-            </div>
-            <div className="text-muted-foreground mb-6">
-              of your winnings only
-            </div>
-            <div className="p-4 rounded-xl bg-card text-sm text-muted-foreground transition-all duration-200 hover:shadow-soft">
-              <strong className="text-foreground">Lost your bet?</strong> Pay nothing. 
-              We only succeed when you succeed.
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
