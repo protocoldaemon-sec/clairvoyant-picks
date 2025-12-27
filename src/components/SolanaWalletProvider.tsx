@@ -13,16 +13,17 @@ const SolanaWalletProvider: FC<SolanaWalletProviderProps> = ({ children }) => {
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
   const wallets = useMemo(
-    () => [
-      new PhantomWalletAdapter(),
-      new SolflareWalletAdapter(),
-    ],
+    () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
     []
   );
 
+  // Auto-connect only if user has a saved token (was previously logged in)
+  const shouldAutoConnect = typeof window !== 'undefined' && !!localStorage.getItem('token');
+
   return (
+    // @ts-expect-error - Type mismatch in wallet-adapter-react types
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect={false}>
+      <WalletProvider wallets={wallets} autoConnect={shouldAutoConnect}>
         {children}
       </WalletProvider>
     </ConnectionProvider>
