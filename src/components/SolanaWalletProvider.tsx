@@ -22,7 +22,7 @@ const SolanaWalletProvider: FC<SolanaWalletProviderProps> = ({ children }) => {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
+      <WalletProvider wallets={wallets} autoConnect={false}>
         {children}
       </WalletProvider>
     </ConnectionProvider>
